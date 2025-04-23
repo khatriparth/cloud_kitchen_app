@@ -9,16 +9,9 @@ from app.core.database import SessionLocal
 from app.core.security import hash_password, verify_password, create_access_token
 from datetime import timedelta
 from app.core.security import decode_access_token
+from app.core.dependencies import get_db
 
 router = APIRouter()
-
-# Dependency to get database session
-def get_db():
-    db = SessionLocal()
-    try:
-        yield db
-    finally:
-        db.close()
 
 @router.post("/register")
 def register_user(user: UserCreate, db: Session = Depends(get_db)):

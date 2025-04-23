@@ -1,5 +1,5 @@
-# from dotenv import load_dotenv
-# import os
+from dotenv import load_dotenv
+import os
 
 # load_dotenv()
 
@@ -11,6 +11,9 @@ from pydantic_settings import BaseSettings
 class Settings(BaseSettings):
     SECRET_KEY: str
     DATABASE_URL: str
+    ALGORITHM: str = "HS256"
+    ACCESS_TOKEN_EXPIRE_MINUTES: int = 30
+    PROJECT_NAME: str = "FastAPI Cloud Kitchen App"
 
     class Config:
         env_file = ".env"

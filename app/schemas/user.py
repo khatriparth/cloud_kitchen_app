@@ -43,3 +43,14 @@ class User(BaseModel):
 
     class Config:
         from_attributes = True
+
+class UserOut(BaseModel):
+    id: int
+    name: str
+    email: EmailStr
+    phone_number: str
+    address: str
+
+    model_config = {
+        "from_attributes": True
+    }
